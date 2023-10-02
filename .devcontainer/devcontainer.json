@@ -1,5 +1,5 @@
 {
-	"name": "Scala 2",
+	"name": "Scala Training",
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
