@@ -26,12 +26,12 @@
                 "scala-lang.scala",
                 "ms-vscode-remote.remote-wsl",
 				"xr0master.webstorm-intellij-darcula-theme",
-				"BrennonDenny.vsc-jetbrains-icons-enhanced",
+				"chadalen.vscode-jetbrains-icon-theme",
 				"k--kato.intellij-idea-keybindings"
             ],
 			"settings": {
 				"workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
-				"workbench.iconTheme": "vsc-jetbrains-icons-enhanced"
+				"workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark"
 			}
         }
     },
