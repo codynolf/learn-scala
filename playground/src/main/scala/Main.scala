@@ -1,56 +1,76 @@
 import java.nio.ByteBuffer
+import scodec.bits.{BitVector, ByteVector}
 
 object Main extends App {
-  val intValue = 1431655765  // Replace with your integer value
-  val binaryString = Integer.toBinaryString(intValue)
+  val sectionControl = List(1431655765, 1431655764, 1431655760, 1431655744, 1431655680, 1431654400,
+    1431568384, 1426063360, 0, 1, 0, 1342177280, 1431306240, 1431633920, 1431655424, 1431655680,
+    1431655760, 1431655764, 1431655765)
 
-  println(s"Integer: $intValue")
-  println(s"Binary: $binaryString")
-
-  val inputString = "abcdefghij"
-
-  // Use `sliding` to create pairs of characters and `map` to apply a function
-  val result = inputString.sliding(2, 2).map { pair =>
-    // `pair` contains two characters, and you can perform some operation on them
-    // For this example, we simply return the pair as a string
-    pair
-  }.toList
-
-  result.foreach(println)
+  //sectionControl.map(convertToBooleanArray(_))
+  //sectionControl.map(decimalToBinaryTwosComplement(_))
+  sectionControl.map(longToBooleanArray(_))
 
 
-  def decimalToBinaryTwosComplement(decimalValue: Int, bitWidth: Int): String = {
-  // Convert the decimal value to binary as an unsigned value
-  val binary = Integer.toBinaryString(decimalValue)
-  println(binary)
-  if (decimalValue >= 0) {
-    // Positive value, pad with zeros to achieve the specified bit width
-    val padZeros = "0" * (bitWidth - binary.length)
-    val rtn = padZeros + binary
-    println(rtn)
-    println(" ")
-    rtn
-  } else {
-    // Negative value, perform 2's complement
-    val inverted = binary.map {
-      case '0' => '1'
-      case '1' => '0'
+  def longToBooleanArray(n: Int): Array[Boolean] = {
+    val bits = new scala.collection.mutable.ArrayBuffer[Boolean]
+    var x = n
+    while (x != 0) {
+      bits += ((x & 3) == 1) // Check if the two least significant bits are 01
+      x = x >> 2 // Right-shift by two bits
     }
-    val invertedPadded = "1" * (bitWidth - inverted.length) + inverted
-    invertedPadded
+    println(bits.toArray.mkString(", "))
+    bits.toArray
   }
-}
 
-  
-  val bitWidth = 32
+  def convertToBooleanArray(sectionControlValue: Int) = {
+    val arrayOfByte = ByteVector.fromInt(sectionControlValue).toArray
 
-  val sectionControl = List(1431655765, 1431655764, 1431655760,1431655744,1431655680,1431654400,1431568384,1426063360,0,1,0,1342177280,1431306240,1431633920,1431655424,1431655680,1431655760,1431655764,1431655765)
+    val read_condensed_state_func: Array[Byte] => Array[Int] = (bytes: Array[Byte]) => {
+      import scala.collection.immutable.BitSet
+      if (bytes == null) {
+        null
+      } else {
+        val recovered = BigInt(bytes).toLong
+        val bits = BitSet.fromBitMask(Array(recovered))
+        val states = (0 until 16)
+          .map { number =>
+            val first = bits(number * 2)
+            val second = bits(number * 2 + 1)
+            (first, second) match {
+              case (false, false) => 0
+              case (false, true)  => 1
+              case (true, false)  => 2
+              case (true, true)   => 3
+            }
+          }
+        states.toArray
+      }
+    }
 
-  sectionControl.map(decimalToBinaryTwosComplement(_, bitWidth))
+    val value = read_condensed_state_func(arrayOfByte)
 
-  println("-----")
+    println(value.mkString(" "))
+  }
 
-  decimalToBinaryTwosComplement(-235, bitWidth)
-
-  val bp = 5;
+  def decimalToBinaryTwosComplement(sectionControlValue: Int) = {
+    // Convert the decimal value to binary as an unsigned value
+    val binary = Integer.toBinaryString(sectionControlValue)
+    println(binary)
+    if (sectionControlValue >= 0) {
+      // Positive value, pad with zeros to achieve the specified bit width
+      val padZeros = "0" * (32 - binary.length)
+      val rtn = padZeros + binary
+      println(rtn)
+      println(" ")
+      rtn
+    } else {
+      // Negative value, perform 2's complement
+      val inverted = binary.map {
+        case '0' => '1'
+        case '1' => '0'
+      }
+      val invertedPadded = "1" * (32 - inverted.length) + inverted
+      println(invertedPadded)
+    }
+  }
 }
