@@ -10,12 +10,12 @@
 		"GIT_EMAIL": "codynolf@outlook.com",
 		"GIT_USER": "cody.nolf"
 	},
-	/*
-	 * WSL mounts
+	
+	 //* WSL mounts
 	"mounts": [
 		"type=bind,source=/home/${localEnv:USER}/.ssh,target=/root/.ssh,readonly",
 		"type=bind,source=/home/${localEnv:USER}/share,target=/home/${localEnv:USER}/share"
-	  ],*/
+	  ],
 	"customizations":
     {
         "vscode": {
