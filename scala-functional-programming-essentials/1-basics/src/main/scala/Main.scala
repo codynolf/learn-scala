@@ -3,8 +3,89 @@ object Main extends App {
   //valuesVariablesAndTypes
   //expressions
   //functions
-  recursion
+  //recursion
+  //callByValueByName
+  //arguments
+  stringOps
+  
+  def stringOps(): Unit = {
+    val str: String = "Hello, I am learning Scala"
 
+    println(str.charAt(2)) // 'l'
+    println(str.substring(7, 11)) //'I am'
+    println(str.split(" ").toList) // List of all the words
+    println(str.startsWith("Hello,")) //true
+    println(str.replace(" ", "-")) // replace spaces with dashes
+    println(str.toLowerCase) // all lower cases... also a toUpperCase
+    println(str.length) // 26
+    println(str.reverse) // reverse chars in string
+    println(str.take(2)) // 'He'
+
+    // convert string to int
+    val aNumberString = "45"
+    val aNumer = aNumberString.toInt
+
+    println('a' +: aNumberString :+ 'z')// append prepend
+
+    // Scala-specific: String interpolators.
+    
+    // S-interpolators
+    val name = "Cody"
+    val age = 34
+    println(s"Hello, my name is $name and I am $age years old")
+    println(s"Hello, my name is $name and I will be turning ${age+1} years old")
+
+    // F-interpolators
+    val speed = 1.257543f
+    println(f"$name can run $speed%2.2f mph.")
+
+    // raw-interpolator
+    println(raw"This is a \n newline")
+    println("This is a \n newline")
+  }
+  def arguments(): Unit = {
+
+    // default arguments
+    @tailrec
+    def factorial(x: Int, accumulator: Int = 1): Int = {
+      if(x<=1) accumulator
+      else factorial(x -1, x * accumulator)
+    }
+
+    factorial(2)
+
+    
+    def savePicture(format: String = "jpg", width: Int, height: Int) : Unit = println("saving pictures")
+    // No go! Need default needs to be added at the end
+    // savePicture(800, 600)
+
+    // OR used named arguments
+
+    savePicture(width = 800, height = 600)
+  }
+  def callByValueByName(): Unit = {
+    def calledByValue(x: Long) : Unit = {
+      println("by value " + x)
+      println("by value " + x)
+    }
+
+    def calledByName(x: => Long) : Unit = {
+      println("by name  " + x)
+      println("by name  " + x)
+    }
+
+    calledByValue(System.nanoTime())
+    calledByName(System.nanoTime())
+    // The above prints the following example.
+    /* 
+     * by value 29287065073947
+     * by value 29287065073947
+     * by name  29287112146211
+     * by name  29287112212501 
+     */
+
+     // Call by name is useful in lazy streams
+  }
   def recursion(): Unit = {
 
     def factorial(n: Int):Int = {
