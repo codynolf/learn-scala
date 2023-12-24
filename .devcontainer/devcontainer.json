@@ -13,18 +13,17 @@
 	
 	 //* WSL mounts
 	"mounts": [
-		"type=bind,source=/home/${localEnv:USER}/.ssh,target=/root/.ssh,readonly",
-		"type=bind,source=/home/${localEnv:USER}/share,target=/home/${localEnv:USER}/share"
+		"type=bind,source=/home/${localEnv:USER}/.ssh,target=/root/.ssh,readonly"
 	  ],
 	"customizations":
     {
         "vscode": {
             "extensions": [
-                "vscjava.vscode-java-pack",
+				"vscjava.vscode-java-pack",
 				"scalameta.metals",
-                "ms-vscode-remote.remote-containers",
-                "scala-lang.scala",
-                "ms-vscode-remote.remote-wsl",
+				"ms-vscode-remote.remote-containers",
+				"scala-lang.scala",
+				"ms-vscode-remote.remote-wsl",
 				"xr0master.webstorm-intellij-darcula-theme",
 				"chadalen.vscode-jetbrains-icon-theme",
 				"k--kato.intellij-idea-keybindings"
