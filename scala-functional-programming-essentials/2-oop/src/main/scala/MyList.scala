@@ -19,7 +19,7 @@ abstract class MyList[+A] {
   def ++[B >: A](list: MyList[B]): MyList[B]
 }
 
-object EmptyList extends MyList[Nothing]{
+case object EmptyList extends MyList[Nothing]{
   def head: Nothing = throw new NoSuchElementException
   def tail: MyList[Nothing] = throw new NoSuchElementException
   def isEmpty: Boolean = true
@@ -31,14 +31,14 @@ object EmptyList extends MyList[Nothing]{
   def ++[B >: Nothing](list: MyList[B]): MyList[B] = list
 }
 
-class Cons[+A](h: A, t: MyList[A]) extends MyList[A]{
+case class Cons[+A](h: A, t: MyList[A]) extends MyList[A]{
   def head: A = h
   def tail: MyList[A] = t
   def isEmpty: Boolean = false
   def add[B >: A](value: B): MyList[B] = new Cons(value, this)
   def printElements: String = 
     if(t.isEmpty) "" + h
-    else h + " " + t.printElements
+    else String.valueOf(h) + " " + t.printElements
   def map[B](transformer: MyTransformer[A, B]): MyList[B] = {
     new Cons(transformer.transform(h), t.map(transformer))
   }
