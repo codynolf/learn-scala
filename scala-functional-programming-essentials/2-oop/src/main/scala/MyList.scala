@@ -68,15 +68,9 @@ object ListTest extends App {
     println(list.toString())
 
     println("-----MAP-----")
-    println(list.map(new (Int => Int){
-      override def apply(elem: Int):Int = elem * 2
-    }).toString)
+    println(list.map(_ * 2).toString)
 
     println("----- FlatMap -----")
-    println(list.flatMap(new (Int => MyList[Int]) {
-      override def apply(elem: Int): MyList[Int] = {
-        new Cons(elem, new Cons(elem + 1, EmptyList))
-      }
-    }).toString)
+    println(list.flatMap(x => new Cons(x, new Cons(x + 1, EmptyList))).toString)
 }
 
