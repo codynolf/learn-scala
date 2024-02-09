@@ -11,28 +11,29 @@
 		"GIT_USER": "cody.nolf"
 	},
 	
-	 //* WSL mounts
+	//* WSL mounts
 	"mounts": [
 		"type=bind,source=/home/${localEnv:USER}/.ssh,target=/root/.ssh,readonly"
-	  ],
+		],
 	"customizations":
-    {
-        "vscode": {
-            "extensions": [
-				"vscjava.vscode-java-pack",
-				"scalameta.metals",
-				"ms-vscode-remote.remote-containers",
-				"scala-lang.scala",
-				"ms-vscode-remote.remote-wsl",
-				"xr0master.webstorm-intellij-darcula-theme",
-				"chadalen.vscode-jetbrains-icon-theme",
-				"k--kato.intellij-idea-keybindings"
-            ],
-			"settings": {
-				"workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
-				"workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark"
+		{
+			"vscode": {
+				"extensions": [
+					"vscjava.vscode-java-pack",
+					"scalameta.metals",
+					"ms-vscode-remote.remote-containers",
+					"scala-lang.scala",
+					"ms-vscode-remote.remote-wsl",
+					"xr0master.webstorm-intellij-darcula-theme",
+					"chadalen.vscode-jetbrains-icon-theme",
+					"k--kato.intellij-idea-keybindings"
+				],
+				"settings": {
+					"workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",
+					"workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
+					"editor.tabSize": 2
+				}
 			}
-        }
-    },
-    "postCreateCommand": "java -version && sbt -version && scala -version && git config --global user.email \"$GIT_EMAIL\" && git config --global user.name \"$GIT_USER\""
+		},
+		"postCreateCommand": "java -version && sbt -version && scala -version && git config --global user.email \"$GIT_EMAIL\" && git config --global user.name \"$GIT_USER\""
 }
