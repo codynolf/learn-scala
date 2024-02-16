@@ -57,11 +57,45 @@ object HofCurries extends App {
     2. toCurry(f: (Int, Int) => Int) => (Int => Int => Int)
        fromCurry(f: Int => Int => Int) => (Int, Int) => Int
 
-       
+
 
     3. compose (f, g) => x => f(g(x))
        andThem (f, g) => x => g(f(x))
    */
 
+   // Exercise 2
+   def toCurry(f: (Int, Int) => Int): (Int => Int => Int) =
+    x => y => f(x, y)
+    
+  def fromCurry(f: Int => Int => Int): (Int, Int) => Int =
+    (x, y) => f(x)(y)
 
+  // exercise 3
+  /* def compose(f: Int => Int, g: Int => Int): Int => Int =
+    x => f(g(x))
+  def andThen(f: Int => Int, g: Int => Int): Int => Int =
+    x => g(f(x)) */
+
+  
+  def compose[A,B,T](f: A => B, g: T => A): T => B =
+    x => f(g(x))
+  def andThen[A,B,C](f: A => B, g: B => C): A => C =
+    x => g(f(x))
+
+
+  def superAdderv2: (Int => Int => Int) = toCurry(_+_)
+  def add4 = superAdderv2(4)
+  println(add4(17))
+
+  def simpleAdder: (Int, Int) => Int = fromCurry(superAdder)
+  println(simpleAdder(4,17))
+
+  val add2 = (x: Int) => x + 2
+  val mult3 = (x: Int) => x * 3
+
+  val composed = compose(add2, mult3)
+  val andThened = andThen(add2, mult3)
+
+  println(composed(4))
+  println(andThened(4))
 }
