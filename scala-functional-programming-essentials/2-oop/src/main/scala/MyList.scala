@@ -117,5 +117,12 @@ object ListTest extends App {
 
     println("----- fold -----")
     println(list.fold(0)(_ + _))
+
+    println("----- For Comphrehension -----")
+    val forCombination = for {
+      l1 <- list
+      l2 <- list2
+    } yield l1 + "" + l2
+    println(forCombination)
 }
 
