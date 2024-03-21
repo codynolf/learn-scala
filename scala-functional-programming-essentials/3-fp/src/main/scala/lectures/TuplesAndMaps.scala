@@ -106,7 +106,18 @@ object SocialNetworkCody {
   def numberOfFriends(network: Map[String, Set[String]], name: String) = network(name).size
 
   def areConnected(network: Map[String, Set[String]], name1: String, name2: String): Boolean = {
-    def bfs(target: String, consideredPeople: Set[String])
+
+      def bfs(target: String, consideredPeople: Set[String], discoveredPeople: Set[String]): Boolean = {
+        if(discoveredPeople.isEmpty) false
+        else {
+          val person = discoveredPeople.head
+          if (person == target) true
+          else if (consideredPeople.contains(person)) bfs(target, consideredPeople, discoveredPeople.tail)
+          else bfs(target, consideredPeople + person, discoveredPeople.tail ++ network(person))
+        }
+      }
+
+      bfs(name2, Set(), network(name1)+name1)
   }
 
   def mostPopular(network: Map[String, Set[String]]): String = network.maxBy(pair => pair._2.size)._1
