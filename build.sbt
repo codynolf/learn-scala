@@ -107,3 +107,12 @@ lazy val scalaFpEssentialspeedFp = (project in file("scala-functional-programmin
   libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "2.3.0",
   libraryDependencies += "org.scodec" %% "scodec-core" % "2.2.2"
 )
+
+lazy val scalaFpEssentialspeedPm = (project in file("scala-functional-programming-essentials/4-pattern")).settings(
+  name := "essentials-fp",
+  organization := "codynolf",
+  version := "1.0",
+  scalaVersion := "3.3.1",
+  libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "2.3.0",
+  libraryDependencies += "org.scodec" %% "scodec-core" % "2.2.2"
+)
