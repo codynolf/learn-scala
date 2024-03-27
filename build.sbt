@@ -116,3 +116,12 @@ lazy val scalaFpEssentialspeedPm = (project in file("scala-functional-programmin
   libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "2.3.0",
   libraryDependencies += "org.scodec" %% "scodec-core" % "2.2.2"
 )
+
+lazy val root = project
+  .in(file("udemy-akka-essentials"))
+  .settings(
+    name := "udemy-akka-essentials",
+    version := "1.0",
+    scalaVersion := "3.4.0",
+    libraryDependencies += "org.scalameta" %% "munit" % "0.7.29" % Test
+  )
