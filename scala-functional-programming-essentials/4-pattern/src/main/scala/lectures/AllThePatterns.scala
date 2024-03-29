@@ -43,28 +43,30 @@ object AllThePatterns extends App {
 
   // 5 - List patterns
   val standardList = List(1,2,3,42)
-  val standListMatching = standList match {
+  val standListMatching = standardList match {
+    case 1 :: List(_) => //infix pattern
     case List(1, _, _, _) => // extractor -> advanced
     case List(1, _*) => // list of arbitrary length - advanced
-    case 1 :: List(_) => //infix pattern
-    case List(1,2,3) :+ 42 => infix pattern
+    case List(1,2,3) :+ 42 => //infix pattern
+    case _ =>
   }
 
   // 6 - type specifiers
-  val unknown: Any = 2
-  unknown match {
-    case list: List[Int] => //explicit type specifier
-  }
+  //val unknown: Any = 2
+  //unknown match {
+  //  case list: List[Int] => //explicit type specifier
+  //  case _ =>
+  //}
 
   // 7 - name binding
   val nameBindingMatch = list match {
-    case notEmpty @ Cons(_,_) => // named pattern, use the name later
     case Cons(1, rest @ Cons(2, _)) => // named patterns inside nested patterns
+    case notEmpty @ Cons(_,_) => // named pattern, use the name later
   }
 
   // 8 - multi patterns
   val multiPattern = list match {
-    case Empty | Cons(0,_) => // compound (multi) pattern
+    case EmptyList | Cons(0,_) => // compound (multi) pattern
   }
 
   // 9 - if guards
@@ -82,8 +84,8 @@ object AllThePatterns extends App {
    
    val numbers = List(1,2,3)
    val numbersMatch = numbers match {
-    case listOfStrings: List[String] => "a list of strings"
+    //case listOfStrings: List[String] => "a list of strings"
     case listoFNumbers: List[Int] => "list of numbers"
-    case _ => println("")
+    case null => println("")
    }
 }
