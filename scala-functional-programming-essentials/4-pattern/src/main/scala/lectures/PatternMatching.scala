@@ -47,6 +47,7 @@ object PatternMatching extends App {
   // sealed classes will help cover your ass, compiler will warn if its sealed.
   animal match {
     case Dog(someBreed) => println(s"Dog of type $someBreed")
+    case _ =>
   }
 
   // new students tend to match everything

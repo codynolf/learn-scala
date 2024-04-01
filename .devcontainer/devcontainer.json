@@ -26,7 +26,8 @@
 					"ms-vscode-remote.remote-wsl",
 					"xr0master.webstorm-intellij-darcula-theme",
 					"chadalen.vscode-jetbrains-icon-theme",
-					"k--kato.intellij-idea-keybindings"
+					"k--kato.intellij-idea-keybindings",
+					"GitHub.copilot"
 				],
 				"settings": {
 					"workbench.colorTheme": "Webstorm IntelliJ Darcula Theme",

@@ -1,6 +1,6 @@
 package lectures
 
-object PatternsEverywhere extends {
+object PatternsEverywhere extends App{
   try {
 
   } catch{
