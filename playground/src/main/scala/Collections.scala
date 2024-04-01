@@ -1,5 +1,5 @@
 object Collections extends App {
-    case class SpatialRecord(geometry: Int, changePrevElementGeom: Int)
+    case class SpatialRecord(geometry: Int, changePrevGeom: Boolean)
 
     // random int 0 or 1
     val randomInt = scala.util.Random.nextInt(2)
