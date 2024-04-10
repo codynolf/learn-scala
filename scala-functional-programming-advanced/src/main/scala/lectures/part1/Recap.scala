@@ -10,7 +10,7 @@ object Recap extends App{
   // compiler infers types for us
   val aCodeBlock = {
     if(aCondition) 74
-    56
+    else 56
   }
 
   // Unit = void

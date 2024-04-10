@@ -5,6 +5,7 @@ lazy val playground = (project in file("playground")).settings(
   scalaVersion := "2.13.12",
   libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "2.1.1",
   libraryDependencies += "org.scodec" %% "scodec-core" % "1.11.9",
+  libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.5.1",
   libraryDependencies ++= Seq( 
     "com.typesafe.akka" %% "akka-http" % "10.5.0",
     "com.typesafe.akka" %% "akka-actor-typed" % "2.8.0",
