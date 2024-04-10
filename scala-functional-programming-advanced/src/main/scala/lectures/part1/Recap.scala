@@ -43,7 +43,7 @@ object Recap extends App{
   // method notations
   val aCroc = new Crocodile
   aCroc.eat(aDog)
-  aCroc eat aDog // natural language
+  //aCroc eat aDog // natural language
 
   // anonymous classes
   val aCarnivore = new Carnivore {
