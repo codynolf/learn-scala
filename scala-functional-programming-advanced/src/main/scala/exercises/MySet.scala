@@ -98,7 +98,7 @@ object MySet {
 
 object MySetTest extends App {
   val s = MySet(1, 2, 3, 4)
-  s + 5 ++ MySet(-1, -2) + 3 map (x => x * 10) foreach println
+  //s + 5 ++ MySet(-1, -2) + 3 map (x => x * 10) foreach println
 
   val negative = !s // s.unary_! = all the naturals not equal to 1, 2, 3, 4
   println(negative(2))

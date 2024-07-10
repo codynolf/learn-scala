@@ -104,6 +104,7 @@ object AdvancedPatternMatching extends App {
   // decomposing sequences
   val vararg = numbers match {
     case List(1, _*) => "starting with 1"
+    case _ => "nothing"
   }
 
   println(vararg)
