@@ -100,8 +100,7 @@ object LazyEvaluation extends App {
    }
 
    object MyStream {
-      def from[A](start: A)(generator: A => A): MyStream[A] = 
-        new Cons(start, MyStream.from(generator(start))(generator))
+      def from[A](start: A)(generator: A => A): MyStream[A] = ???
    }
 
 
