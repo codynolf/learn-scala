@@ -42,3 +42,8 @@ bin/
 
 # general
 *.class
+project/metals.sbt
+project/project/metals.sbt
+scala-functional-programming-advanced/project/build.properties
+scala-functional-programming-essentials/3-fp/project/build.properties
+udemy-akka-essentials/project/build.properties
