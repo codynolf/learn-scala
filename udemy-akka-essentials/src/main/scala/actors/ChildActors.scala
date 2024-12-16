@@ -1,3 +1,3 @@
-object ChildActors {
+object ChildActors extends App{
   
 }
