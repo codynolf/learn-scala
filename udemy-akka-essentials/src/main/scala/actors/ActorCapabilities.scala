@@ -51,5 +51,6 @@ object ActorCapabilities extends App{
 
   case class ForwardMessage(contents: String, ref: ActorRef)
   alice ! ForwardMessage("Hi", bob)
+
 }
 
