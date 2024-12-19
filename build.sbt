@@ -136,5 +136,5 @@ lazy val akkaEssentials = project
     libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.20",
     libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % "2.6.20",
     libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.18",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.18" % "test"
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.18" % Test
   )
