@@ -7,7 +7,7 @@ import org.scalatest.matchers.should.Matchers
 import org.scalatest.BeforeAndAfterAll
 import scala.concurrent.duration._
 
-class TimedAssertionsSpec extends TestKit(ActorSystem("TestPobeSpec"))
+class TimedAssertionsSpec extends TestKit(ActorSystem("TimedAssertionsSpec"))
   with ImplicitSender
   with AnyWordSpecLike
   with Matchers
